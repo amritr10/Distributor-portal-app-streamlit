@@ -106,7 +106,7 @@ def build_network_dot(flat_df):
     return "\n".join(dot)
 
 # ------------------------- Page Setup -------------------------
-st.set_page_config(page_title="Distributor kick off New Products 2025", layout="wide")
+st.set_page_config(page_title="Distributor kick off New Products 2025", layout="wide",initial_sidebar_state="expanded")
 
 # ------------------------- Custom CSS -------------------------
 st.markdown("""
