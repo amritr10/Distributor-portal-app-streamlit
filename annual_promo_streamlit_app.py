@@ -1039,31 +1039,18 @@ else:
                 else:
                     st.info("No internal document available")
 
-                # ----- Section 5.5: Partner Uploads -----
+                # ----- Section 5.5: Partner Uploads (revised) -----
                 st.markdown("---")
                 st.header("Partner Uploads")
 
-                # allow multiple files
-                uploaded_files = st.file_uploader(
-                    "Upload any partner-supplied documents here",
-                    type=['pdf','docx','xlsx','csv','png','jpg'],
-                    accept_multiple_files=True,
-                    key="partner_uploads"
+                # a styled button linking out to your Google Form
+                FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScTum2gbuVo-iFujgNo7_xzJQRIPBU4MKzQhzKREzuJj5xCeg/viewform?usp=header"
+                st.markdown(
+                    f'<a href="{FORM_URL}" target="_blank">'
+                    f'  <button class="buy-button">Upload Partner Information</button>'
+                    '</a>',
+                    unsafe_allow_html=True
                 )
-
-                if uploaded_files:
-                    # ensure folder exists
-                    upload_dir = os.path.join(os.getcwd(), "partner uploads")
-                    os.makedirs(upload_dir, exist_ok=True)
-
-                    for uploaded_file in uploaded_files:
-                        # build a safe path
-                        dest_path = os.path.join(upload_dir, uploaded_file.name)
-                        # write the file
-                        with open(dest_path, "wb") as f:
-                            f.write(uploaded_file.getbuffer())
-                        st.success(f"Saved `{uploaded_file.name}` to `{upload_dir}`")
-
 
                 # ----- Section 6: Downloads -----
                 st.markdown("---")
