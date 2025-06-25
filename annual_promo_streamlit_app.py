@@ -1127,11 +1127,11 @@ else:
                             st.table(display_df.iloc[10:][cols_to_show])
 
 # ------------------------- Hide Streamlit Menu -------------------------
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             </style>
-# """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+"""
+st.markdown(hide_st_style, unsafe_allow_html=True)
