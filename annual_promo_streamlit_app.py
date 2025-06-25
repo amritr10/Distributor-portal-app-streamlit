@@ -262,6 +262,8 @@ if not st.session_state.logged_in:
                          "@cuttedge.com.au",
                          "@factorycontrols.com.au",
                          "@tech-source.com.au",
+                         "@deltaelec.com.au"
+                         "@contech.com.au",
                          "@omron.com",
                      ]):
                 st.error(
@@ -1036,6 +1038,32 @@ else:
                         st.markdown(f'<a href="{doc_link}" target="_blank"><button class="buy-button">Show Internal Document</button></a>', unsafe_allow_html=True)
                 else:
                     st.info("No internal document available")
+
+                # ----- Section 5.5: Partner Uploads -----
+                st.markdown("---")
+                st.header("Partner Uploads")
+
+                # allow multiple files
+                uploaded_files = st.file_uploader(
+                    "Upload any partner-supplied documents here",
+                    type=['pdf','docx','xlsx','csv','png','jpg'],
+                    accept_multiple_files=True,
+                    key="partner_uploads"
+                )
+
+                if uploaded_files:
+                    # ensure folder exists
+                    upload_dir = os.path.join(os.getcwd(), "partner uploads")
+                    os.makedirs(upload_dir, exist_ok=True)
+
+                    for uploaded_file in uploaded_files:
+                        # build a safe path
+                        dest_path = os.path.join(upload_dir, uploaded_file.name)
+                        # write the file
+                        with open(dest_path, "wb") as f:
+                            f.write(uploaded_file.getbuffer())
+                        st.success(f"Saved `{uploaded_file.name}` to `{upload_dir}`")
+
 
                 # ----- Section 6: Downloads -----
                 st.markdown("---")
