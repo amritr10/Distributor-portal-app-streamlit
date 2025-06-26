@@ -788,7 +788,7 @@ else:
 
                 # ----- Section 3.5: Bundle Network (REPLACED) -----
                 st.markdown("---")
-                st.subheader("Demo Bundle")
+                st.subheader("Demo Bundle valid till end of July")
 
                 # 1) load the JSON config for this series
                 config_dir = "bundles config files"
